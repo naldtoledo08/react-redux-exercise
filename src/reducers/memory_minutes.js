@@ -14,7 +14,7 @@ export default function memory_minutes (state =[], payload) {
 			
 
 		case 'publish':
-			 var new_state = state.map((item, index) => {
+			 var a = state.map((item, index) => {
 				          if(item.id === payload.id) {
 				            return Object.assign({}, item, {
 				             	published : 1,
@@ -23,8 +23,7 @@ export default function memory_minutes (state =[], payload) {
 				          }
 				          return item
 				        })
-			 return new_state;
-
+			 return a;
 		/*case 'add_points':
 			return Object.assign({}, state, {
 				points : (state.points + parseInt(payload.points, 10))

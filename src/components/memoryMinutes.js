@@ -17,7 +17,7 @@ class MemoryMinutes extends Component{
 	}*/
 
 	render(){
-		console.log(this.props);
+		//console.log(this.props);
 		const _action = this.props.action;
 
 		const MemoryMinutesItems = this.props.memory_minutes.map((item, index) => {

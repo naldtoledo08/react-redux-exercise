@@ -14,7 +14,7 @@ class PublishMemoryMinutesForm extends Component{
 		var points = document.getElementById(memory_minute.id).value.trim();
 
 		if(points === "" || isNaN(points)){
-			console.log("Please enter points");
+			alert("Please enter points");
 		}else{
 			this.props.action.publishMemoryMinutes.publishMemoryMinutes(memory_minute.id, points);
 			this.props.action.userPointsCounter.userPointsCounter('add_points', points);
@@ -23,7 +23,7 @@ class PublishMemoryMinutesForm extends Component{
 		
 	}
 	render(){
-		console.log(this.props.action);
+		//console.log(this.props.action);
 		//var isPublished = (this.props.memory_minute.published == 1) ? true : false;
 		if(this.props.memory_minute.published === 1){
 			return (

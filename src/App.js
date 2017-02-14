@@ -23,7 +23,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state, prop){
-	console.log(state);
+	
 	return {
 		points : state.points
 	}
