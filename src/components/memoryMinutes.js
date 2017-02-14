@@ -1,53 +1,62 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as MemoryMinutesActions from '../actions/submitMemoryMinutes.js'
+import React, { Component } 	from 'react';
+//import { bindActionCreators } 	from 'redux';
+import { connect } 				from 'react-redux';
+//import * as submitMemoryMinutesActions from '../actions/submitMemoryMinutes.js';
+//import * as publishMemoryMinutesActions from '../actions/publishMemoryMinutes.js';
+//import * as unlockMemoryMinutesActions from '../actions/unlockMemoryMinutes.js';
+//import * as userPointsCounterActions from '../actions/userPointsCounter.js';
 import SubmitMemoryMinutesForm from './submitMemoryMinutesForm';
+import PublishMemoryMinutesForm from './publishMemoryMinutesForm';
+import UnlockMemoryMinutesForm from './unlockMemoryMinutesForm';
 
 
 class MemoryMinutes extends Component{
-	constructor(props){
+	/*constructor(props){
 		super(props);
-	}
+
+	}*/
 
 	render(){
+		console.log(this.props);
+		const _action = this.props.action;
+
 		const MemoryMinutesItems = this.props.memory_minutes.map((item, index) => {
+
 			return  <tr key={index}>
 			            <td>{item.title}</td>
-			            <td>
-			              <button >Unlock</button>
+			            <td className="text-center">
+			              	<UnlockMemoryMinutesForm memory_minute={item} />
 			            </td>
-			            <td>
-			            	<input name="points" type="text" value=""/>
-			             	<button >Publish</button>
+			            <td className="text-center">
+			            	<PublishMemoryMinutesForm memory_minute={item}/>
 			            </td>
-			          </tr>
-		});
+			        </tr>
 
+		});
+		
 		return (
 			<div className="">
 
-				<SubmitMemoryMinutesForm submitMemoryMinutes={this.props.action.submitMemoryMinutes} />
+				<SubmitMemoryMinutesForm />
 
-				
-				<div className="sumbitted-memory-minutes">
-      
-
-					<h1> List of Memory Minutes</h1>
+				<div className="form">
+					<div className="sumbitted-memory-minutes">
+   						<h2> List of Memory Minutes</h2>
 			            <div className="row">
-			              <table>
-			                <thead>
-			                <tr>
-			                  <th>Title</th>
-			                  <th>Unlock</th>
-			                  <th>Publish</th>
-			                </tr>
-			                </thead>
-			                <tbody>
-			                  {MemoryMinutesItems}
-			                </tbody>
-			              </table>
+							<table>
+								<thead>
+									<tr>
+										<th>Title</th>
+										<th>Unlock</th>
+										<th>Publish</th>
+									</tr>
+								</thead>
+								<tbody>
+									{MemoryMinutesItems}
+								</tbody>
+							</table>
 			            </div> 
+					</div>
 				</div>
 			</div>
 		)
@@ -60,10 +69,4 @@ function mapStateToProps(state, prop){
 	}
 }
 
-function mapDispatchToProps(dispatch){
-	return {
-		action: bindActionCreators(MemoryMinutesActions, dispatch)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MemoryMinutes);
+export default connect(mapStateToProps)(MemoryMinutes);
