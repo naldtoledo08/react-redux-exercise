@@ -5,6 +5,7 @@ import * as unlockMemoryMinutesActions 	from '../actions/unlockMemoryMinutes.js'
 import * as userPointsCounterActions 	from '../actions/userPointsCounter.js';
 
 const UnlockMemoryMinutesForm = (props) =>{
+
 	const onClickUnlock = (id, points) =>{
 		props.action.unlockMemoryMinutes.unlockMemoryMinutes(id);
 		props.action.userPointsCounter.userPointsCounter('deduct_points', points);
@@ -32,6 +33,24 @@ const UnlockMemoryMinutesForm = (props) =>{
 		)
 	}
 }
+
+UnlockMemoryMinutesForm.propTypes = {
+   	memory_minute : React.PropTypes.shape({  	
+	  	id: React.PropTypes.number.isRequired,
+	  	title: titleCondition,
+	  	text : React.PropTypes.string.isRequired,
+	  	points: React.PropTypes.any.isRequired,
+ 	})   
+};
+
+function  titleCondition(props, propName, componentName) {
+	let value = props[propName];
+	if(value === ""){
+		return new Error(propName +  " cannot be empty");
+	}
+    return value.length <= 100 ? null : new Error(propName +  " is longer than 100 characters");
+}
+
 
 function mapStateToProps(state, prop){
 	return {}

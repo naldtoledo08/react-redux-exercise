@@ -47,6 +47,11 @@ const MemoryMinutes = (props) =>{
 			</div>
 		)
 }
+
+MemoryMinutes.propTypes = {
+  memory_minutes: React.PropTypes.array
+};
+
 /*
 class MemoryMinutes extends Component{
 

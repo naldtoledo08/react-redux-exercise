@@ -35,6 +35,26 @@ const PublishMemoryMinutesForm = (props) =>{
 	}
 }
 
+PublishMemoryMinutesForm.propTypes = {
+  	memory_minute : React.PropTypes.shape({  	
+	  	id: React.PropTypes.number.isRequired,
+	  	title: titleCondition,
+	  	text : React.PropTypes.string.isRequired,
+	  	points: React.PropTypes.any.isRequired,
+ 	})
+};
+
+function  titleCondition(props, propName, componentName) {
+	let value = props[propName];
+	if(value === ""){
+		return new Error(propName +  " cannot be empty");
+	}
+    return value.length <= 100 ? null : new Error(propName +  " is longer than 100 characters");
+}
+
+
+
+
 
 function mapStateToProps(state, prop){
 	return {

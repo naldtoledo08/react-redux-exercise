@@ -16,6 +16,10 @@ const App = (props) =>{
     );
 }
 
+App.propTypes = {
+  points: React.PropTypes.number
+};
+
 function mapStateToProps(state, prop){
 	return {
 		points : state.points
@@ -23,4 +27,6 @@ function mapStateToProps(state, prop){
 }
 
 export default connect(mapStateToProps)(App);
+
+
 
